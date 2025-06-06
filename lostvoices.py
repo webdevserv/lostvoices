@@ -59,12 +59,10 @@ while True:
         portrait_resized = resize_image(portrait, 400, 400)
         water_resized = resize_image(water_texture, 400, 400)
 
-    for alpha in np.linspace(0, 1, num=20):  
+    for alpha in np.linspace(0, 1, num=10):  # Very slow transition
         blended = cv2.addWeighted(portrait_resized, 1 - alpha, water_resized, alpha, 0)
-        blended = np.clip(blended, 0, 255).astype(np.uint8)  # Ensuring valid image format
         image_placeholder.image(cv2.cvtColor(blended, cv2.COLOR_BGR2RGB), use_container_width=True)
-        time.sleep(0.2)
-
+        time.sleep(0.5)  # Increase sleep time for visibility
 
     time.sleep(2)  # Pause before selecting next image
 
