@@ -54,11 +54,17 @@ portraits = sorted([os.path.join(portrait_folder, f) for f in os.listdir(portrai
 selected_portrait = random.choice(portraits)
 portrait = cv2.imread(selected_portrait)
 
-if portrait is not None:
-    portrait_resized = resize_image(portrait, 400, 400)
-    water_resized = resize_image(water_texture, 400, 400)
-    image_placeholder.image(cv2.cvtColor(portrait_resized, cv2.COLOR_BGR2RGB), use_container_width=False)
-    await asyncio.sleep(3)
+async def display_initial_image():
+    selected_portrait = random.choice(portraits)
+    portrait = cv2.imread(selected_portrait)
+
+    if portrait is not None:
+        portrait_resized = resize_image(portrait, 400, 400)
+        water_resized = resize_image(water_texture, 400, 400)
+        image_placeholder.image(cv2.cvtColor(portrait_resized, cv2.COLOR_BGR2RGB), use_container_width=False)
+        await asyncio.sleep(3)
+
+asyncio.run(display_initial_image())
 
 async def smooth_transition():
     selected_portrait = random.choice(portraits)
