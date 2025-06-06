@@ -16,7 +16,7 @@ meta_tags = """
       <meta name="author" content="webdevserv">Add commentMore actions
 </head>
 """
-components.html(meta_tags, height=0)More actions
+components.html(meta_tags, height=0)
 
 portrait_folder = "MyImages"
 water_texture_path = "DarkWater/dark_water.png"
