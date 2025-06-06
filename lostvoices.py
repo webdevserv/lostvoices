@@ -50,6 +50,30 @@ st.title("AI Digital Memorial to Lost Voices in Dark Water")
 image_placeholder = st.empty()
 portraits = sorted([os.path.join(portrait_folder, f) for f in os.listdir(portrait_folder) if f.endswith(('.jpg', '.png'))])
 
+st.write("""
+**AI Digital Memorial to Lost Voices in Dark Waters**  
+Honoring women murdered, raped, abused, or assaulted by men in war and peace.  
+We visualize their disappearance into dark waters, symbolizing loss, erasure, and the urgency for justice.  
+Inspired by the German Lost Girl and Natalie Wood’s husband's unsettling 6-minute interview—haunting proof that in patriarchal systems, some crimes fade into silence, and justice is never guaranteed. When violence is ignored, erased, or excused, getting away with murder isn’t an anomaly—it’s a built-in failure of the system.""")
+
+# Closing statement (displayed once)
+st.write("""
+Dark Waters: This artistic work is a tribute to those whose voices have been silenced. Through visual transitions, we reflect on loss, erasure, and the urgency for justice. May this serve as a reminder to stop violence against women.
+
+Lan artistiko hau isilduak izan direnen omenaldia da. Irudien bidezko trantsizioekin, galera, ezabaketa eta justiziaren premia hausnartzen ditugu. Gogoan hartzea erresistentzia da, eta ekimen honek hori gogorarazi nahi du.
+
+Cette œuvre artistique est un hommage à ceux dont la voix a été réduite au silence. À travers des transitions visuelles, nous réfléchissons à la perte, à l'effacement et à l'urgence de la justice. Que cela rappelle l'importance de mettre fin à la violence envers les femmes.
+
+Esta obra artística es un homenaje a quienes han sido silenciados. A través de transiciones visuales, reflexionamos sobre la pérdida, el borrado y la urgencia de justicia. Que esto sirva como un recordatorio para detener la violencia contra las mujeres.
+Github: https://github.com/webdevserv/gll
+""")
+contact_form = """
+    <a href="https://webdevserv.github.io/html_bites/dev/webdev.html">More info</a>.</p>
+    <div style="margin: 0.75em 0;"><a href="https://www.buymeacoffee.com/Artgen" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a></div>
+"""
+st.markdown(contact_form, unsafe_allow_html=True)
+
+
 # Smooth transition loop (keeps running indefinitely)
 while True:
     selected_portrait = random.choice(portraits)
