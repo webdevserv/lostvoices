@@ -3,9 +3,8 @@ import streamlit.components.v1 as components
 import cv2
 import numpy as np
 import os
-#import time
+import time
 import random
-import asyncio
 
 st.set_page_config(layout="wide")
 
