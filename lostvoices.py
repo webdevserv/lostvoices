@@ -58,7 +58,7 @@ if portrait is not None:
     portrait_resized = resize_image(portrait, 400, 400)
     water_resized = resize_image(water_texture, 400, 400)
     image_placeholder.image(cv2.cvtColor(portrait_resized, cv2.COLOR_BGR2RGB), use_container_width=False)
-    time.sleep(3)
+    await asyncio.sleep(3)
 
 async def smooth_transition():
     selected_portrait = random.choice(portraits)
