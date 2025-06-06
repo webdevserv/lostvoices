@@ -52,9 +52,6 @@ portraits = sorted([os.path.join(portrait_folder, f) for f in os.listdir(portrai
 
 # Smooth transition loop (keeps running indefinitely)
 while True:
-    time.sleep(1)  # 🔹 Small pause before picking a new image
-
-    # 🔹 Pick a **truly random** image
     selected_portrait = random.choice(portraits)
     portrait = cv2.imread(selected_portrait)
 
@@ -62,17 +59,19 @@ while True:
         portrait_resized = resize_image(portrait, 400, 400)
         water_resized = resize_image(water_texture, 400, 400)
 
-        # 🔹 Display the newly selected image **before transition starts**
+        # **Display the new image before transitioning**
         image_placeholder.image(cv2.cvtColor(portrait_resized, cv2.COLOR_BGR2RGB), use_container_width=True)
-        time.sleep(2)  # Ensuring visibility before blending
+        time.sleep(1)  # Pause ensures visibility before transition
 
-        # 🔹 Run the smooth transition
-        for alpha in np.linspace(0, 1, num=20):
-            blended = cv2.addWeighted(portrait_resized, 1 - alpha, water_resized, alpha, 0)
+        # **Run smooth transition properly**
+        for alpha in np.linspace(0, 1, num=20):  # Ensuring gradual blending
+            blended = cv2.addWeighted(portrait_resized.astype(np.float32), 1 - alpha, water_resized.astype(np.float32), alpha, 0)
+            blended = np.clip(blended, 0, 255).astype(np.uint8)  # Ensures proper image format
             image_placeholder.image(cv2.cvtColor(blended, cv2.COLOR_BGR2RGB), use_container_width=True)
             time.sleep(0.2)
 
-        time.sleep(2)  # 🔹 Delay before picking a new image again
+        time.sleep(2)  # Brief delay before choosing the next image
+
 
 
    
