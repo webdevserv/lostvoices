@@ -12,7 +12,7 @@ st.set_page_config(layout="wide")
 meta_tags = """
 <head>
     <meta name="description" content="Streamlit app Dark Waters: A tribute to silenced voices, reflecting on loss, erasure, and justice.">
-    <meta name="keywords" content="Natalie Wood, Richard Wagner assault, violence againts women, injustice, conceptual art, violence">
+    <meta name="keywords" content="Natalie Wood, assault, violence againts women, injustice, conceptual art, violence">
       <meta name="author" content="webdevserv">Add commentMore actions
 </head>
 """
