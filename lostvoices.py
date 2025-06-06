@@ -52,7 +52,8 @@ portraits = sorted([os.path.join(portrait_folder, f) for f in os.listdir(portrai
 
 # Smooth transition loop (keeps running indefinitely)
 while True:
-    selected_portrait = random.choice(portraits)
+    random.shuffle(portraits)  # Shuffle the list to ensure randomness
+    selected_portrait = random.choice(portraits)  # Pick a truly random image
     portrait = cv2.imread(selected_portrait)
 
     if portrait is not None:
@@ -61,7 +62,7 @@ while True:
 
         # **Display new image before transition begins**
         image_placeholder.image(cv2.cvtColor(portrait_resized, cv2.COLOR_BGR2RGB), use_container_width=True)
-        time.sleep(1)  # Brief pause to ensure rendering
+        time.sleep(1)  # Brief pause
 
         # **Run smooth transition**
         for alpha in np.linspace(0, 1, num=20):
