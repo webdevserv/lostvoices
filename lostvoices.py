@@ -56,6 +56,8 @@ portrait = cv2.imread(selected_portrait)
 if portrait is not None:
     portrait_resized = resize_image(portrait, 400, 400)
     water_resized = resize_image(water_texture, 400, 400)
+    image_placeholder.image(cv2.cvtColor(portrait_resized, cv2.COLOR_BGR2RGB), use_container_width=True)
+    time.sleep(2)
 
     # 💡 Start smooth transition immediately
     for alpha in np.linspace(0, 1, num=20):
