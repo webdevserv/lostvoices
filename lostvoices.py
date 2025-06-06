@@ -3,8 +3,9 @@ import streamlit.components.v1 as components
 import cv2
 import numpy as np
 import os
-import time
+#import time
 import random
+import asyncio
 
 st.set_page_config(layout="wide")
 
@@ -59,8 +60,7 @@ if portrait is not None:
     image_placeholder.image(cv2.cvtColor(portrait_resized, cv2.COLOR_BGR2RGB), use_container_width=False)
     time.sleep(3)
 
-# 💡 **Smooth transition loop**
-while True:
+async def smooth_transition():
     selected_portrait = random.choice(portraits)
     portrait = cv2.imread(selected_portrait)
 
@@ -71,6 +71,6 @@ while True:
         for alpha in np.linspace(0, 1, num=20):
             blended = cv2.addWeighted(portrait_resized, 1 - alpha, water_resized, alpha, 0)
             image_placeholder.image(cv2.cvtColor(blended, cv2.COLOR_BGR2RGB), use_container_width=False)
-            time.sleep(0.2)
+            await asyncio.sleep(0.2)
 
-        time.sleep(2)
+asyncio.run(smooth_transition())
