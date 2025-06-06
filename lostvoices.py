@@ -56,8 +56,8 @@ while True:
     portrait = cv2.imread(selected_portrait)
 
     if portrait is not None:
-        portrait_resized = resize_image(portrait, 400, 400)
-        water_resized = resize_image(water_texture, 400, 400)
+        portrait_resized = resize_image(portrait, 800, 800)
+        water_resized = resize_image(water_texture, 800, 800)
 
     for alpha in np.linspace(0, 1, num=20):  # Very slow transition
         blended = cv2.addWeighted(portrait_resized, 1 - alpha, water_resized, alpha, 0)
